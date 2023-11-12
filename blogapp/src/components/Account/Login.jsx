@@ -1,69 +1,109 @@
 
-//import {Box ,TextField,Button} from '@mui/material';
-
-
-
-
-// const Login=()=>{
-    
-//         const imageURL = 'https://www.sesta.it/wp-content/uploads/2021/03/logo-blog-sesta-trasparente.png';
-
-//         return (
-//         <Box>
-//         <img src={imageURL} alt="Login"/>
-//         <TextField variant="standard"/>
-//         <TextField variant="standard"/>
-//         <Button variant="contained">Login</Button>
-//         <Button>Create a account </Button>
-//         </Box>
-//     )
-// }
-
-
-// Login.js
 import React, { useState } from 'react';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
+import {TextField,Button,Box,styled} from '@mui/material';
+import { palette } from '@mui/material';
+
+
+
+const Component = styled(Box)`
+    
+    width: 300px;
+    
+    margin: auto;
+    padding: 20px;
+    box-shadow: 10px 2px 10px 2px rgb(0 0 1/0.6) ;
+    
+`;
+const Wrapper = styled(Box)`
+    padding: 25px 30px;
+    display: flex;
+    flex: 1;
+    flex direction:column;
+    overflow: auto;
+    & >div,&>button, & >p{
+        margin-top: 30px;
+    }
+`;
+const LoginButton = styled(Button)`
+    text-transform: none;
+    
+    color: #fff;
+    width: 200px;
+    border-radius: 2px;
+`;
+
+const SignupButton = styled(Button)`
+    text-transform: none;
+    background: #fff;
+    color: #2874f0;
+    width:200px;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%);
+`;
+
 
 function Login() {
   const [username, setUsername] = useState('');
+  const [email, setEmail]= useState('');
   const [password, setPassword] = useState('');
-
+  
   const handleLogin = () => {
     // Add your authentication logic here.
+    
     if (username === 'yourUsername' && password === 'yourPassword') {
       alert('Login successful!');
     } else {
       alert('Login failed. Please check your credentials.');
     }
   };
+  
 
   return (
-    <div>
-      <h2>Login</h2>
+    <Component sx={{ bgcolor: 'text.disabled' }}  >
+    <box >
+      
+      <h2 >Login</h2> 
+      <Wrapper>
       <form>
-        <TextField
+        <TextField sx={{ input: { color: 'white' } }} 
+        
           label="Username"
-          variant="outlined"
+          variant="standard"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
         <TextField
+          label="Email"
+          type="email"
+          variant="standard"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <TextField
           label="Password"
           type="password"
-          variant="outlined"
+          variant="standard"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <Button
+    
+        <LoginButton
           variant="contained"
-          color="primary"
           onClick={handleLogin}
         >
           Login
-        </Button>
+        </LoginButton>
+        <p>OR</p>
+        <SignupButton
+          variant="outlined"
+        >
+          Sign up
+        </SignupButton>
+        
       </form>
-    </div>
+      </Wrapper>
+    </box>
+    </Component>
   );
 }
 
