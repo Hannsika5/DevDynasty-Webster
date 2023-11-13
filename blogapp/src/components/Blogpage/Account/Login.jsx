@@ -18,7 +18,7 @@ const Wrapper = styled(Box)`
     padding: 25px 30px;
     display: flex;
     flex: 1;
-    flex direction:column;
+    flex direction : column;
     overflow: auto;
     & >div,&>button, & >p{
         margin-top: 30px;
