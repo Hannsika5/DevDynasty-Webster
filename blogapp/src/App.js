@@ -7,8 +7,11 @@ import { Routes,Route } from 'react-router-dom';
 import Addblog from './components/Blogpage/Addblog';
 import UserBlogs from './components/Blogpage/UserBlogs';
 import Blogdetails from './components/Blogpage/Blogdetails';
+import { useSelector } from 'react-redux';
 function App() {
-  return <React.Fragment>
+  //const isLoggedIn=useSelector((state)=> state.isLoggedIn );
+  //console.log(isLoggedIn);
+  return( <React.Fragment>
 <header><Header/></header>
 <main>
   <Routes>
@@ -19,12 +22,14 @@ function App() {
     <Route path ="/myBlogs/add" element={<Addblog/>}/>
 
   </Routes>
-</main>
-  {/* // <div className="App">
-  //   <Login/>
-  // </div> */}
+
+   {/* <div className="App">
+    <Login/>
+   </div>  */}
+  </main>
 </React.Fragment>
-    
+  )   
 }
+
 
 export default App;
