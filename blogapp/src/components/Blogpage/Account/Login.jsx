@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
-import {TextField,Button,Box,styled, Typography} from '@mui/material';
-
+import {TextField,Button,Box, Typography} from '@mui/material';
+import axios from "axios";
 import { useDispatch } from "react-redux";
 import { authActions } from '../../../store';
 import { useNavigate } from "react-router-dom";
@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
   const naviagte = useNavigate();
   const dispath = useDispatch();
   const [inputs, setInputs] = useState({
-    username: "",
+    name: "",
     email: "",
     password: "",
   });
@@ -20,23 +20,43 @@ import { useNavigate } from "react-router-dom";
   const handleChange = (e) => {
     setInputs((prevState) => ({
       ...prevState,
-      [e.target.username]: e.target.value,
+      [e.target.name]: e.target.value,
     }));
   };
-  
+  const sendRequest = async (type = "login") => {
+    const res = await axios
+      .post("http://localhost:5000/api/user/login", {
+        name: inputs.name,
+        email: inputs.email,
+        password: inputs.password,
+      })
+      .catch((err) => console.log(err));
 
-    
+    const data = await res.data;
+    console.log(data);
+    return data;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(inputs);
-   
+    if (isSignup) {
+      sendRequest("signup")
+        .then((data) => localStorage.setItem("userId", data.user._id))
+        .then(() => dispath(authActions.login()))
+        .then(() => naviagte("/blogs"));
+    } else {
+      sendRequest()
+        .then((data) => localStorage.setItem("userId", data.user._id))
+        .then(() => dispath(authActions.login()))
+        .then(() => naviagte("/blogs"));
+    }
   };
   
 
   return (
     <div>
-      <form on>
+      <form  onSubmit={handleSubmit}>
         <Box
           maxWidth={400}
           display="flex"
@@ -54,11 +74,11 @@ import { useNavigate } from "react-router-dom";
           </Typography>
           {isSignup &&(
             <TextField
-              name="username"
-              label="Enter Username"
+              name="name"
+              label="Enter Name"
               onChange={handleChange}
-              value={inputs.username}
-              placeholder="UserName"
+              value={inputs.name}
+              placeholder="Name"
               margin="normal"
             />
           )}{" "}
@@ -87,7 +107,7 @@ import { useNavigate } from "react-router-dom";
             sx={{ borderRadius: 3, marginTop: 3 }}
             color="warning"
           >
-            Login
+            Submit
           </Button>
           <Button
             onClick={() => setIsSignup(!isSignup)}
