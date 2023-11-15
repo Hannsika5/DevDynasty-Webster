@@ -11,13 +11,13 @@ app.use("/api/blog",blogRouter);
 
 
 
-mongoose.connect('mongodb+srv://kusumag004:f1y7OhsU9t5vOXsA@blog.7hteox4.mongodb.net/?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://ravulahannsika:Aishu3568@cluster0.uukkuj0.mongodb.net/?retryWrites=true&w=majority')
     .then(()=>{
         console.log("database connected");
     });
 
 
-app.listen(5000,()=>{
+app.listen(6500,()=>{
     console.log("server started");
 });
 
