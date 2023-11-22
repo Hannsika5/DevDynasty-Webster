@@ -4,6 +4,7 @@ import ModeEditOutlineIcon from '@mui/icons-material/ModeEditOutline';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { ClassNames } from '@emotion/react';
 const Blog = ({title,description,imageURL,userName,isUser,id}) => {
   const navigate = useNavigate();
   const handleEdit = ()=>{
@@ -16,17 +17,19 @@ const Blog = ({title,description,imageURL,userName,isUser,id}) => {
 
   }
   const handleDelete=()=>{
-   deleteRequest().then(data=>console.log(data));
-  }
-  console.log(title,isUser);
+   deleteRequest().
+   then(()=> navigate("/"))
+   .then(()=> navigate("/blogs"));
+  };
+
   return (
     <div>
     {" "}
     <Card sx={{ width:"40%",margin:'auto',mt :2,padding:3,boxShadow:"5px 7px 5px #000",":hover":{boxShadow:"10px 10px 20px #000 "}}}>
      {isUser && (
      <Box display='flex'>
-      <IconButton onClick = {handleEdit} sx={{marginLeft:'auto'}}> <ModeEditOutlineIcon/></IconButton>
-      <IconButton onClick ={ handleDelete}> <DeleteIcon/></IconButton>
+      <IconButton onClick = {handleEdit} sx={{marginLeft:'auto'}}> <ModeEditOutlineIcon color="warning"/></IconButton>
+      <IconButton onClick ={ handleDelete}> <DeleteIcon color="error" /></IconButton>
      </Box>
      )}
      
@@ -47,13 +50,17 @@ const Blog = ({title,description,imageURL,userName,isUser,id}) => {
         alt=""
       />
       <CardContent>
-        <Typography variant="body2" color="text.secondary">
+      <hr />
+      <br />
+        <Typography
+        className={ClassNames.font}
+         variant="body2" color="text.secondary">
           <b>{userName}</b>{":"}{description}
  </Typography>
         </CardContent>
       
     </Card></div>
-  )
-}
+  );
+};
 
-export default Blog
+export default Blog;
