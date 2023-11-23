@@ -28,15 +28,16 @@ const BlogDetail = () => {
       setBlog(data.blog)
       setInputs({title:data.blog.title,
       description:data.blog.description,
+      
     
-    })
+    });
     });
     
   },[id]);
   const sendRequest=async()=>{
-    const res = await axios.get(`http://localhost:6500/api/blog/update/:${id}`,{
+    const res = await axios.put(`http://localhost:6500/api/blog/update/${id}`,{
       title:inputs.title,
-      description:inputs.description,
+      description:inputs.description
     }).catch(err=>console.log(err));
     const data = await res.data;
     return data;

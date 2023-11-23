@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import Blog from './Blog';
+
 const Blogs = () => {
   const [blogs,setBlogs] = useState();
   const sendRequest= async()=>{
@@ -10,7 +11,7 @@ const Blogs = () => {
   } 
   useEffect(()=>{
     sendRequest().then(data=>setBlogs(data.blogs));
-    },[])
+    },[]);
   
   return (
     <div>
@@ -21,9 +22,10 @@ const Blogs = () => {
      title={blog.title}
      description={blog.description} 
      imageURL={blog.image} 
-    user={blog.user}/>))}
+   // user={blog.user}/>))}
+   userName={blog.user.name}/>))}
     </div>
-  )
-}
+  );
+};
 
 export default Blogs;
