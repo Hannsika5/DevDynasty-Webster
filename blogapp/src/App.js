@@ -6,6 +6,7 @@ import Login from './components/Blogpage/Account/Login';
 import { Routes,Route } from 'react-router-dom';
 import Addblog from './components/Blogpage/Addblog';
 import UserBlogs from './components/Blogpage/UserBlogs';
+import DetailView from './components/Blogpage/DetailView';
 import BlogDetail from './components/Blogpage/BlogDetail';
 import { useSelector } from 'react-redux';
 function App() {
@@ -20,6 +21,7 @@ function App() {
     <Route path ="/myBlogs" element={<UserBlogs/>}/>
     <Route path ="/myBlogs/:id" element={<BlogDetail/>}/> 
     <Route path ="/myBlogs/add" element={<Addblog/>}/>
+    <Route path ="/details/:id" element={<DetailView/>}/>
 
   </Routes>
 

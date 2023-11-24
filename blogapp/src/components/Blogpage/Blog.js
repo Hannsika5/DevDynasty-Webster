@@ -30,6 +30,7 @@ const Blog = ({title,description,imageURL,userName,isUser,id}) => {
      <Box display='flex'>
       <IconButton onClick = {handleEdit} sx={{marginLeft:'auto'}}> <ModeEditOutlineIcon color="warning"/></IconButton>
       <IconButton onClick ={ handleDelete}> <DeleteIcon color="error" /></IconButton>
+      
      </Box>
      )}
      
