@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import Blog from './Blog';
-import { addElipsis } from '../../utils/common-utils';
+
 const UserBlogs = () => {
   const [user,setUser]=useState();
   const id = localStorage.getItem("userId");
@@ -20,7 +20,7 @@ const UserBlogs = () => {
       key={index}
       isUser={true}
       title={blog.title}
-      description={addElipsis(blog.description,100)}  
+      description={blog.description}  
       imageURL={blog.image} 
      userName={user.name}/>))}</div>
   )

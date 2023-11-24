@@ -23,8 +23,9 @@ const Blog = ({title,description,imageURL,userName,isUser,id}) => {
   };
 
   return (
-    <div>
+    <div class="display">
     {" "}
+    
     <Card sx={{ width:"40%",margin:'auto',mt :2,padding:3,boxShadow:"5px 7px 5px #000",":hover":{boxShadow:"10px 10px 20px #000 "}}}>
      {isUser && (
      <Box display='flex'>

@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Header from "./components/Blogpage/Header";
+import Footer  from "./components/Blogpage/Footer";
 import Blogs from './components/Blogpage/Blogs';
 import Login from './components/Blogpage/Account/Login';
 import { Routes,Route } from 'react-router-dom';
@@ -29,6 +30,7 @@ function App() {
     <Login/>
    </div>  */}
   </main>
+  <footer><Footer/></footer>
 </React.Fragment>
   )   
 }
