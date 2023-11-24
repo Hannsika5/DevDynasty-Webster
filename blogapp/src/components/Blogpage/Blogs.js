@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Box } from '@mui/material';
 import axios from 'axios';
 import Blog from './Blog';
 const Blogs = () => {
@@ -14,6 +15,7 @@ const Blogs = () => {
   
   return (
     <div>
+    <Box  display={'flex' }  flexDirection={'row'}>
     {blogs && blogs.map((blog,index)=>(
       <Blog
       id={blog._id} 
@@ -21,7 +23,10 @@ const Blogs = () => {
      title={blog.title}
      description={blog.description} 
      imageURL={blog.image} 
-    user={blog.user}/>))}
+      user={blog.user}
+      userName={blog.user.name}
+    />))}
+    </Box>
     </div>
   )
 }
