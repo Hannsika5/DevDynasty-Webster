@@ -25,7 +25,7 @@ const Blogs = () => {
      title={blog.title}
      description={blog.description} 
      imageURL={blog.image} 
-   // user={blog.user}/>))}
+    user={blog.user}
    userName={blog.user.name}/>))}
    </Box>
    </div>

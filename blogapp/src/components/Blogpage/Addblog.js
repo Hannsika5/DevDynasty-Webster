@@ -1,10 +1,11 @@
 import { Box, InputLabel,Typography, TextField, Button } from '@mui/material';
 import axios from 'axios';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 const Addblog = () => {
-  
+    const navigate = useNavigate();
     const[inputs,setInputs]=useState({
       title:"",
       description:"",
@@ -29,7 +30,7 @@ const Addblog = () => {
     const handleSubmit=(e)=>{
       e.preventDefault();
       console.log(inputs);
-      sendRequest().then((data)=>console.log(data))
+      sendRequest().then((data)=>console.log(data)).then(()=>navigate("/myBlogs/"));
     }
 
   
@@ -37,7 +38,7 @@ const Addblog = () => {
     <div>
       <form onSubmit={handleSubmit}>
       <Box border={3} borderColor="black" boxShadow =" 15px 10px 10px" padding={4} margin={'auto'} marginTop={4}
-      display="flex" flexDirection='column' width={"80%"}>
+      display="flex" flexDirection='column' width={"80%"} height={"40%"}>
         <Typography color={'white'} textAlign={'center'} variant='h2' fontWeight={'bold'} padding={2} margin={3}> Create your blog  </Typography>
         <InputLabel  sx={{mb:1,mt:2,fontsize:'24px',fontweight:"bold" }}>Title</InputLabel>
         <TextField  name= "title" value={inputs.title} onChange={handleChange} margin='auto' variant='outlined'/>
