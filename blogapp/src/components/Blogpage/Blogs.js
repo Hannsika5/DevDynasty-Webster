@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { Box } from '@mui/material';
 import axios from 'axios';
 import Blog from './Blog';
+import {userSearchParams,Link} from 'react-router-dom';
+
 const Blogs = () => {
   const [blogs,setBlogs] = useState();
   const sendRequest= async()=>{
@@ -11,7 +13,7 @@ const Blogs = () => {
   } 
   useEffect(()=>{
     sendRequest().then(data=>setBlogs(data.blogs));
-    },[])
+    },[]);
   
   return (
     <div>
@@ -23,12 +25,11 @@ const Blogs = () => {
      title={blog.title}
      description={blog.description} 
      imageURL={blog.image} 
-      user={blog.user}
-      userName={blog.user.name}
-    />))}
-    </Box>
-    </div>
-  )
-}
+   // user={blog.user}/>))}
+   userName={blog.user.name}/>))}
+   </Box>
+   </div>
+  );
+};
 
 export default Blogs;

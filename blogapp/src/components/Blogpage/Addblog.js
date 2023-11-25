@@ -1,6 +1,7 @@
 import { Box, InputLabel,Typography, TextField, Button } from '@mui/material';
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+
 
 const Addblog = () => {
   
@@ -37,8 +38,8 @@ const Addblog = () => {
       <form onSubmit={handleSubmit}>
       <Box border={3} borderColor="black" boxShadow =" 15px 10px 10px" padding={4} margin={'auto'} marginTop={4}
       display="flex" flexDirection='column' width={"80%"}>
-        <Typography color={'brown'} textAlign={'center'} variant='h2' fontWeight={'bold'} padding={2} margin={3}> Create your blog  </Typography>
-        <InputLabel sx={{mb:1,mt:2,fontsize:'24px',fontweight:"bold"}}>Title</InputLabel>
+        <Typography color={'white'} textAlign={'center'} variant='h2' fontWeight={'bold'} padding={2} margin={3}> Create your blog  </Typography>
+        <InputLabel  sx={{mb:1,mt:2,fontsize:'24px',fontweight:"bold" }}>Title</InputLabel>
         <TextField  name= "title" value={inputs.title} onChange={handleChange} margin='auto' variant='outlined'/>
           <InputLabel sx={{mb:1,mt:2,fontsize:'24px',fontweight:"bold"}}>Description</InputLabel>
         <TextField name="description" value={inputs.description} onChange={handleChange} margin='auto' variant='outlined'/>

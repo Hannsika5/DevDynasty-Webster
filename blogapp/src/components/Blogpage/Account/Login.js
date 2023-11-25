@@ -60,7 +60,7 @@ sendRequest().then((data)=>localStorage.setItem("userId",data.user._id))
           marginTop={5}
           borderRadius={5}
         >
-          <Typography variant="h2" padding={3} textAlign="center">
+          <Typography variant="h2" color={'white'} padding={3} textAlign="center">
             {isSignup ? "Signup" : "Login"}
           </Typography>
           {isSignup && (
@@ -96,15 +96,16 @@ sendRequest().then((data)=>localStorage.setItem("userId",data.user._id))
             Width={400}
             variant="contained"
             sx={{ borderRadius: 3, marginTop: 3,marginBottom:1 }}
-            color="warning"
+            color="primary"
           >
             Submit
           </Button>
           <Typography>OR</Typography>
           <Button
             onClick={() => setIsSignup(!isSignup)}
-            variant='outlined'
+            variant='contained'
             sx={{ borderRadius: 3,marginTop:1}}
+            color="primary"
           >
            {isSignup ? "Login" : "Signup"}
           </Button>
