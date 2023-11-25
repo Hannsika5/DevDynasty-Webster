@@ -15,7 +15,7 @@ const Blogs = () => {
   
   return (
     <div>
-    <Box  display={'flex' }  flexDirection={'row'}>
+    <Box  display={'flex' }  flexDirection={'column'}>
     {blogs && blogs.map((blog,index)=>(
       <Blog
       id={blog._id} 
